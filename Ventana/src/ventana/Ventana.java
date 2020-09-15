@@ -13,10 +13,9 @@ public class Ventana extends JFrame{
     private final JTextField txtFile; 
     private final JTextArea text;
     private final JButton encryptJButton;
-    private final JButton decryptJButton;
     
     Ventana(){
-    	super("Testing cipher");
+    	super("Encriptador");
         layout = new BorderLayout(20, 10);
         setLayout(layout);
         JPanel fileJPanel = new JPanel();
