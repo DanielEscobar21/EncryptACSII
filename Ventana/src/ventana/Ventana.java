@@ -32,16 +32,12 @@ public class Ventana extends JFrame{
         buttonJPanel.setLayout(new BorderLayout());
         encryptJButton = new JButton("Encriptar");
     	buttonJPanel.add(encryptJButton, BorderLayout.NORTH);
-    	decryptJButton = new JButton("Desencriptar");
-    	buttonJPanel.add(decryptJButton, BorderLayout.SOUTH);
         add(buttonJPanel, BorderLayout.EAST);
         
         txtFile.addActionListener(new txtAction()); 
         btnEncriptar e = new btnEncriptar();
         encryptJButton.addActionListener(e);
-        btnDecrypt d = new btnDecrypt();
-        decryptJButton.addActionListener(d);
-    }
+        }
     
     class txtAction implements ActionListener{
     	@Override
@@ -60,15 +56,7 @@ public class Ventana extends JFrame{
             }
     }
     
-    class btnDecrypt implements ActionListener{
-        @Override
-            public void actionPerformed(ActionEvent d){
-                String decrypt = text.getText();
-                String textoDesencriptado = encriptar(decrypt);
-                text.setText(textoDesencriptado);
-                
-            }
-    }
+    
     
     String encriptar(String s){
         char[] convert = new char[40];
@@ -106,41 +94,6 @@ public class Ventana extends JFrame{
         return  "Encriptación:  "+ ec;
     }
     
-    String decrypt (String s){
-        char[] convert = new char[20];
-        char[] lugar = new char[20];
-        StringBuffer dc = new StringBuffer();
-        String codigo= text.getText();
-        String palabra = codigo.trim();
-        float aux = palabra.length();
-   
-        for (int i = 0; i < aux; i++) {
-            char caracter = palabra.charAt(i);
-            int ascii = (int)caracter-3;
-            char codi = (char)ascii;
-            convert[i] = codi;
-        }
-        
-        for (int i = 1; i <= Math.round((aux/2)+.1); i++) {
-            int num = (int)(aux)+i;
-            lugar[i] = convert[num];
-        }
-        
-        for (int i = 1; i <= Math.round((aux/2)); i++) {
-            int auxChar = Math.round((aux/2)) + i;
-            
-            char caracter = convert[auxChar];
-            int ascii = (int)caracter+1;
-            char codi = (char)ascii;
-            int aux1 = (int) Math.round((aux/2)+.1)+i;
-            lugar[aux1] = codi;
-        }
-        
-        for (int i = 0; i <= aux; i++) {
-            dc = dc.append(lugar[i]);
-        }
-        return  "Desencriptación:  "+ dc;
-    }
     
    public static void main(String[] args)
    { 
